@@ -13,5 +13,9 @@ DELETE two
 DELETE two
 DELETE 3
 DELETE one
+PUT one boston
+PUT two seattle
+PUT 3 tidy
+PUT 5 2
 
 
