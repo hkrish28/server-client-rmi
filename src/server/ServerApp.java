@@ -1,4 +1,8 @@
-package src.server;
+package server;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  * ServerApp is the entry point for starting the server.
@@ -12,16 +16,19 @@ public class ServerApp {
    * @param args command-line arguments specifying the TCP and UDP port numbers
    */
   public static void main(String[] args) {
-    if (args.length != 2) {
-      System.out.println("Two port numbers must be provided");
-    }
     try {
-      int tcpPort = Integer.parseInt(args[0]);
-      int udpPort = Integer.parseInt(args[1]);
-      new TCPHandler(tcpPort).start();
-      new UDPHandler(udpPort).start();
-    } catch (NumberFormatException e) {
-      System.out.println("Port numbers should be integers");
+
+      Server obj = new ServerImpl();
+      Server stub = (Server) UnicastRemoteObject.exportObject(obj, 0);
+      // Bind the remote object's stub in the registry
+      Registry registry = LocateRegistry.getRegistry();
+      registry.rebind("Store", stub);
+
+      System.err.println("Server ready");
+    } catch (Exception e) {
+      System.err.println("Server exception: " + e.toString());
+      e.printStackTrace();
+
     }
   }
 }

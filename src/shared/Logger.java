@@ -1,4 +1,4 @@
-package src.shared;
+package shared;
 
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
