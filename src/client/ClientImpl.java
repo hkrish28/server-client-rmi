@@ -8,16 +8,29 @@ import java.util.concurrent.ExecutionException;
 import server.Server;
 import shared.Logger;
 
+/**
+ * ClientImpl is the implementation of the Client interface.
+ * It handles sending requests to the remote server and logging the responses.
+ */
 public class ClientImpl implements Client {
 
   private static Logger logger = new Logger(System.out);
   private Server server;
 
+  /**
+   * Constructs a ClientImpl with the specified server.
+   *
+   * @param server the remote server to which requests are sent
+   */
   public ClientImpl(Server server) {
     this.server = server;
   }
 
-
+  /**
+   * Sends requests to the server and handles responses.
+   *
+   * @param in the input stream from which to read requests
+   */
   @Override
   public void sendRequests(InputStream in) {
     Scanner inputScanner = new Scanner(in);
@@ -35,7 +48,7 @@ public class ClientImpl implements Client {
   }
 
   /**
-   * Parses a command into a Request object based on the command arguments.
+   * Parses a command based on the command arguments and dispatches the request via server object.
    *
    * @param command the array of command arguments
    */
@@ -72,10 +85,20 @@ public class ClientImpl implements Client {
     }
   }
 
+  /**
+   * Logs a message using the logger.
+   *
+   * @param message the message to log
+   */
   private void log(String message) {
     logger.log(message);
   }
 
+  /**
+   * Logs a response message from the server using the logger.
+   *
+   * @param message the response message to log
+   */
   private void logResponse(String message) {
     logger.log("Response from server : " + message);
   }

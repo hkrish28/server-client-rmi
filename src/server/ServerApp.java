@@ -6,14 +6,13 @@ import java.rmi.server.UnicastRemoteObject;
 
 /**
  * ServerApp is the entry point for starting the server.
- * It initializes and starts both TCP and UDP handlers on specified ports.
  */
 public class ServerApp {
 
   /**
-   * The main method starts the server by initializing TCP and UDP handlers.
+   * The main method starts the server by initializing and binding the RMI server implementation.
    *
-   * @param args command-line arguments specifying the TCP and UDP port numbers
+   * @param args command-line arguments
    */
   public static void main(String[] args) {
     try {
@@ -26,7 +25,7 @@ public class ServerApp {
 
       System.err.println("Server ready");
     } catch (Exception e) {
-      System.err.println("Server exception: " + e.toString());
+      System.err.println("Server exception: " + e.getMessage());
       e.printStackTrace();
 
     }
