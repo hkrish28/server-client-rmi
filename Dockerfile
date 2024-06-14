@@ -1,7 +1,7 @@
 FROM bellsoft/liberica-openjdk-alpine-musl:11 AS client-build
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
-RUN javac src/shared/*.java src/client/*.java src/server/*.java
+RUN javac -d bin src/shared/*.java src/client/*.java src/server/*.java
 
 
 FROM bellsoft/liberica-openjdk-alpine-musl:11 AS server-build

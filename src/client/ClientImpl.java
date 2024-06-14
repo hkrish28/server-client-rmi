@@ -40,7 +40,7 @@ public class ClientImpl implements Client {
         System.out.println("Exiting...");
         return;
       }
-      log("Request sent to server - ");
+      log("Request to be sent to server - " + inputText);
       dispatchRequest(inputText.split(" "));
       System.out.println("Please enter your command (put, get, delete)");
     }
