@@ -1,9 +1,10 @@
-# Project 1
+# Project 2
 
 #### Running the Server and Client (Docker)
 * Execute `deploy.sh` to run the server application as a docker container and set up a docker network
 * Execute `run_client.sh` to run a client that connects to the server. Examples to run the code is as below:
   * ./run_client.sh client-name (Runs the client interactively)
+  * ./run_client.sh client-name-2 (Runs the second client interactively)
 
 
 #### Scripting
